@@ -100,7 +100,7 @@ async def test_element_history_custom_limit(client: AsyncClient):
         content=GetHistoryRequest(
             element=element_ref,
             limit=2,
-            state=StandardPaginationRequest(page=2, state=page1.state),
+            state=StandardPaginationRequest(requested_page=2, state=page1.state),
         ).SerializeToString(),
     )
     assert r.is_success, r.text
@@ -116,7 +116,7 @@ async def test_element_history_custom_limit(client: AsyncClient):
         content=GetHistoryRequest(
             element=element_ref,
             limit=3,
-            state=StandardPaginationRequest(page=1, state=page1.state),
+            state=StandardPaginationRequest(requested_page=1, state=page1.state),
         ).SerializeToString(),
     )
     assert r.is_success, r.text
