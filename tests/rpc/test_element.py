@@ -2,12 +2,12 @@ from httpx import AsyncClient
 from starlette import status
 
 from app.lib.io.xml_codec import XMLToDict
-from app.models.proto.element_pb2 import (
+from app.models.proto.element_pb2 import GetHistoryRequest, GetHistoryResponse
+from app.models.proto.shared_pb2 import (
     ElementRef,
-    GetHistoryRequest,
-    GetHistoryResponse,
+    ElementType,
+    StandardPaginationRequest,
 )
-from app.models.proto.shared_pb2 import ElementType, StandardPaginationRequest
 
 
 async def _create_node_with_versions(client: AsyncClient, num_versions: int) -> int:
